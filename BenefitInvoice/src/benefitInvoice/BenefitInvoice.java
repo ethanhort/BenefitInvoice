@@ -76,7 +76,7 @@ public class BenefitInvoice {
 			UIHandler.handleError("Problem writing to file. Please try again.");
 		}
 		
-		System.out.println(output);
+		//System.out.println(output);
 		//System.out.println(gli);
 		//System.out.println(distCodes);
 	}
