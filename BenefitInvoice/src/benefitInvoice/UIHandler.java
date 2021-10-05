@@ -153,6 +153,47 @@ public class UIHandler {
 		fileBrowserPanel.add(distCodeBrowserPanel); 
 		return fileBrowserPanel; 
 	}
+	
+	public void popUp(String msg) {
+		
+		JFrame errorFrame = new JFrame("Rounding Exceeded Tolerance"); 
+		errorFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JPanel panel = new JPanel(); 
+		errorFrame.add(panel);
+
+		//initialize the error messages that will be displayed
+		JLabel errorLabel = new JLabel("Error: " + msg); 
+		errorLabel.setForeground(Color.RED);
+
+		//close program button functionality
+		JButton close = new JButton("Close"); 
+		close.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				errorFrame.dispose();
+			}
+		}); 
+
+		//add subcomponents to top level panel; 
+		panel.add(errorLabel); 
+		panel.add(close); 
+
+		//set layout for popup and draw it to screen
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		errorFrame.setPreferredSize(new Dimension(600, 400));
+		errorFrame.pack();
+		errorFrame.setLocationRelativeTo(null); 
+		errorFrame.setVisible(true);
+
+		//wait for user to terminate the program
+		for (;;) {
+			try {
+				TimeUnit.SECONDS.sleep(2 );
+			} catch (Exception e) {
+
+			}
+		}
+		
+	}
 
 	/**
 	 * pop up a window with error message and terminate program execution
@@ -169,9 +210,7 @@ public class UIHandler {
 
 		//initialize the error messages that will be displayed
 		JLabel errorLabel = new JLabel("Error: " + msg); 
-		JLabel constLabel = new JLabel("Please ensure that money totals in cash accounts and ledger file are equal and try again"); 
 		errorLabel.setForeground(Color.RED);
-		constLabel.setForeground(Color.RED);
 
 		//close program button functionality
 		JButton close = new JButton("Close"); 
@@ -183,7 +222,6 @@ public class UIHandler {
 
 		//add subcomponents to top level panel; 
 		panel.add(errorLabel); 
-		panel.add(constLabel); 
 		panel.add(close); 
 
 		//set layout for popup and draw it to screen
@@ -196,7 +234,7 @@ public class UIHandler {
 		//wait for user to terminate the program
 		for (;;) {
 			try {
-				TimeUnit.MINUTES.sleep(5);
+				TimeUnit.SECONDS.sleep(5);
 			} catch (Exception e) {
 
 			}
@@ -318,6 +356,7 @@ public class UIHandler {
 
 						//close window if user successfully submits form
 						frame.dispose();
+						isFinished = true; 
 					}
 				}
 				else {

@@ -12,7 +12,7 @@ public class DistCodeRow {
 		this.grant = grant; 
 		this.loanNum = loanNum; 
 		this.fas = fas; 
-		this.percent = new BigDecimal(Double.parseDouble(percent.replace("%", ""))); 
+		this.percent = BigDecimal.valueOf(Double.valueOf(percent.replace("%", "")));  
 		this.percent = this.percent.divide(new BigDecimal(100)); 
 	}
 	

@@ -1,0 +1,16 @@
+GLI file starts on row 2, ends after first blank row
+	-distribution code in column 3
+	-EE debit id in column 6
+	-ee debit value in column 7
+	-er debit id in column 8
+	-er debit value in column 9
+	
+dist codes file starts on first non-blank line after line 1, ends at end of file 
+	-rows with no value in program column will not be used (make sure every line of data has something in that col and that no "filler data" is 
+		included in that col
+	-distribution code is in col 1
+	-program is in col 3
+	-grant is in col 4
+	-loan num is in col 5
+	-fas is in col 6
+	-percent is in col 7
