@@ -20,6 +20,10 @@ public class OutputRow {
 		debitValue = debitValue.add(num); 
 	}
 	
+	public void addCredit(BigDecimal num) {
+		creditValue = creditValue.add(num); 
+	}
+	
 	public String getProgram() {
 		return program;
 	}
@@ -46,6 +50,15 @@ public class OutputRow {
 	
 	public BigDecimal getCreditValue() {
 		return creditValue; 
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (o instanceof OutputRow) {
+			OutputRow row = (OutputRow) o; 
+			return row.getProgram().equals(program) && row.getGrant().equals(grant) && row.getFas().equals(fas); 			
+		}
+		return false; 
 	}
 	
 	@Override

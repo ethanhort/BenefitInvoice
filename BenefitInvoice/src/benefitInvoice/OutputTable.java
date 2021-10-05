@@ -14,6 +14,7 @@ public class OutputTable {
 		this.codes = codes; 
 		table = new ArrayList<OutputRow>(); 
 		createTable(); 
+		coalesce(); 
 	}
 	
 	public void createTable() {
@@ -22,9 +23,34 @@ public class OutputTable {
 		}
 	}
 	
-//	public void addRow(String program, String grant, String loan, String fas, String debitId, BigDecimal debitValue, String creditId, BigDecimal creditValue) {
-//		table.add(new OutputRow(program, grant, loan, fas, debitId, debitValue, creditId, creditValue)); 
-//	}
+	public void coalesce() {
+		List<OutputRow> temp = new ArrayList<OutputRow>();
+		boolean found; 
+		
+		//iterate through entire report
+		for (int i = 0; i < table.size(); i++) {
+			//find rows of 1005
+			if (table.get(i).getId() == "1005") {
+				found = false; 
+				
+				//check temp list to see if that row already exists there
+				for (int j = 0; j < temp.size(); j++) {
+					if (table.get(i).equals(temp.get(j))) {
+						temp.get(j).addCredit(table.get(i).getCreditValue());
+						found = true; 
+					}
+				}
+				
+				//if row not in temp, add it to temp
+				if (!found) {
+					temp.add(table.get(i)); 
+				}
+				table.remove(i); 
+				i--; 
+			}
+		}
+		table.addAll(temp); 
+	}
 	
 	public OutputRow get(int i) {
 		return table.get(i); 

@@ -85,18 +85,18 @@ public class GLIRow {
 			for (int i = 0; i < eeTable.size(); i++) {
 				OutputRow eeRow = eeTable.get(i); 
 				OutputRow erRow = erTable.get(i); 
-				credits.add(new OutputRow(eeRow.getProgram(), eeRow.getGrant(), eeRow.getLoan(), eeRow.getFas(), "1005", BigDecimal.ZERO.setScale(2),
+				credits.add(new OutputRow(eeRow.getProgram(), eeRow.getGrant(), "9999", eeRow.getFas(), "1005", BigDecimal.ZERO.setScale(2),
 						eeRow.getDebitValue().add(erRow.getDebitValue()))); 
 			}
 		} else if (eeTable.size() > 0) {
 			for (int i = 0; i < eeTable.size(); i++) {
 				OutputRow row = eeTable.get(i);
-				credits.add(new OutputRow(row.getProgram(), row.getGrant(), row.getLoan(), row.getFas(), "1005", BigDecimal.ZERO.setScale(2), row.getDebitValue())); 
+				credits.add(new OutputRow(row.getProgram(), row.getGrant(), "9999", row.getFas(), "1005", BigDecimal.ZERO.setScale(2), row.getDebitValue())); 
 			}
 		} else {
 			for (int i = 0; i < erTable.size(); i++) {
 				OutputRow row = erTable.get(i);
-				credits.add(new OutputRow(row.getProgram(), row.getGrant(), row.getLoan(), row.getFas(), "1005", BigDecimal.ZERO.setScale(2), row.getDebitValue())); 
+				credits.add(new OutputRow(row.getProgram(), row.getGrant(), "9999", row.getFas(), "1005", BigDecimal.ZERO.setScale(2), row.getDebitValue())); 
 			}
 		}
 
